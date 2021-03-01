@@ -4,10 +4,9 @@
 --  These functions create a postgres aggregate function
 --  that implement a xor-over-md5() function for queries (works as sum(), max(), etc).
 --
---  Uselful to compare if two queries resultsets are equivalent, with disordered rows.
+--  Uselful to compare if two query's resultsets are equivalent, with disordered rows.
 --  Returns a 128 bit array (32 hex chars), which is a XOR of each row's md5(row_val).
 --
---  The algorithm degenerates if row values are equal in the same table,
 --  since the XOR yields ZEROES in that case
 --
 --  Uses the 'create aggregate' facility of postgres (!)
