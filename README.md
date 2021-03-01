@@ -9,7 +9,7 @@ Postgres aggregate function that:
 - works in plain postgres without any contrib extensions
 - uses, however, postgres-only extensions to the sql standard
 
-## Script name: create_xor_aggregate.sh
+## Script name: create_xor_aggregate.sql
 
 - This script creates the postgres aggregate function
 - It also declares a few auxiliary functions (beware of name collisions)
