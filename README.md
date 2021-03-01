@@ -21,9 +21,10 @@ Once created, this new function works as any other aggregate function: sum(), ma
 
 ## Purpuse
 
-- Uselful to compare if two queries resultsets are equivalent, but without having to re-order the rows
-- Returns 32 hex chars, which are the XOR of every row's md5().
+- Uselful to compare if two query's resultsets are equivalent, even disordered
+- Returns a 32-byte-length hex string, which is the aggregate XOR of every row's md5().
 
+## Requires
 - Uses the 'create aggregate' facility of postgres (!) (no extensions involved)
 - Uses also postgres' md5() and bit(128) features
 
@@ -35,8 +36,5 @@ However, if the db cache is not primed, then text_xor_agg() will be comparativel
 
 ## Example
  
-select count(*), _ text_xor_agg (x.*::text) _  from x;
+select count(*), text\_xor\_agg (x.*::text)  from x;
 
-## Bugs:
-
-While calling the to_hex() function, zero (left) padding is required to make 8 bytes per integer.
