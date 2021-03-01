@@ -5,6 +5,8 @@ Creates an aggregate function that:
 - works like other sql aggregate functions: count(\*), sum(xx), etc
 - calculates the md5() of each value received as its argument (text type)
 - performs XOR operations on the list of calculated md5() results
+- works in plain postgres without any contrib extensions
+- uses, however, postgres only extensions to the sql standard
 
 ## Script name: create_xor_aggregate.sh
 
