@@ -2,12 +2,15 @@
 
 Creates an aggregate function, providing XOR of md5(some_text) for postgres (9.* and up)
 
-## Name: create_xor_aggregate.sh
+## Script name: create_xor_aggregate.sh
 
-Run once to create the functiono in the DB.
-
-These functions create a postgres aggregate function
+This script creates a postgres aggregate function
 that implements a xor-over-md5() function for queries.
+It also declares a few auxiliary functions (beware of name collisions)
+
+Run once to create the aggregate function in your postgres DB.
+
+## Aggregate function name:  text_xor_agg (text) returns text;
 
 Once created, this new function works as any other aggregate function: sum(), max(), etc.
 
