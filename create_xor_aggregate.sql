@@ -1,10 +1,6 @@
---
--- create_xor_aggregate.sh 
--- See documentation: https://github.com/artejera/text_xor_agg/blob/7df211c46767c4d7639acea921392819701424a5/README.md#text_xor_agg-
 
-create or replace function text_xor_acc (inout acc_ bit, in txt_ text) returns bit
-    as 'select acc_ # md5bit(txt_)'
-LANGUAGE SQL IMMUTABLE RETURNS NULL ON NULL INPUT;
+-- create_xor_aggregate.sh 
+-- See documentation: https://github.com/artejera/text_xor_agg/blob/main/README.md
 
 create or replace function text_xor_final (bit) returns text as $$
     select
