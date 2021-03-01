@@ -1,6 +1,10 @@
 # text_xor_agg
 
-Creates an aggregate function, providing XOR of md5(some_text) for postgres (9.* and up)
+Creates an aggregate function that:
+
+- works like other sql aggregate functions: count(\*), sum(xx), etc
+- calculates the md5() of each value received as its argument (text type)
+- performs XOR operations on the list of calculated md5() results
 
 ## Script name: create_xor_aggregate.sh
 
