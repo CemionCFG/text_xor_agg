@@ -21,11 +21,11 @@ Once created, this new function works as any other aggregate function: sum(), ma
 
 ## Purpuse
 
-Uselful to compare if two queries resultsets are equivalent, but without having to re-order the rows
-Returns 32 hex chars, which are the XOR of every row's md5().
+- Uselful to compare if two queries resultsets are equivalent, but without having to re-order the rows
+- Returns 32 hex chars, which are the XOR of every row's md5().
 
-Uses the 'create aggregate' facility of postgres (!) (no extensions involved)
-Uses also postgres' md5() and bit(128) features
+- Uses the 'create aggregate' facility of postgres (!) (no extensions involved)
+- Uses also postgres' md5() and bit(128) features
 
 ## Measured speed (after priming cached buffers):
   -   text_xor_agg(some_text_id)    is  5 times slower than **select count(),sum(some_cnt),sum(other_cnt) from x**
@@ -35,7 +35,7 @@ However, if the db cache is not primed, then text_xor_agg() will be comparativel
 
 ## Example
  
-select count(*), _text_xor_agg (x.*::text)_  from x;
+select count(*), _ text_xor_agg (x.*::text) _  from x;
 
 ## Bugs:
 
