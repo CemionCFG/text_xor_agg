@@ -1,4 +1,4 @@
-# text_xor_agg
+# text_xor_agg ()
 
 Creates a postgres aggregate function that:
 
