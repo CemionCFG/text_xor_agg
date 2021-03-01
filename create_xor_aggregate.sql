@@ -30,10 +30,10 @@ LANGUAGE SQL IMMUTABLE RETURNS NULL ON NULL INPUT;
 create or replace function text_xor_final (bit) returns text as $$
     select
     (
-        to_hex(substring ($1 from  1 for 32)::int) ||
-        to_hex(substring ($1 from 33 for 32)::int) ||
-        to_hex(substring ($1 from 65 for 32)::int) ||
-        to_hex(substring ($1 from 97 for 32)::int)
+        lpad(to_hex(substring ($1 from  1 for 32)::int),8, '0') ||
+        lpad(to_hex(substring ($1 from 33 for 32)::int),8, '0') ||
+        lpad(to_hex(substring ($1 from 65 for 32)::int),8, '0') ||
+        lpad(to_hex(substring ($1 from 97 for 32)::int),8, '0')
     ) :: text;
 $$ LANGUAGE SQL IMMUTABLE RETURNS NULL ON NULL INPUT;
 
