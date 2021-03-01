@@ -20,23 +20,23 @@
 --  If db cache is not primed, then text_xor_agg() will probably be HALF as fast as count(),sum(),sum()
 --
 
-create or replace function md5bit (in txt_ text) returns bit as \$\$
+create or replace function md5bit (in txt_ text) returns bit as $$
         select ('x' || md5(txt_))::bit(128) ;
-\$\$ LANGUAGE SQL IMMUTABLE RETURNS NULL ON NULL INPUT;
+$$ LANGUAGE SQL IMMUTABLE RETURNS NULL ON NULL INPUT;
 
 create or replace function text_xor_acc (inout acc_ bit, in txt_ text) returns bit
     as 'select acc_ # md5bit(txt_)'
 LANGUAGE SQL IMMUTABLE RETURNS NULL ON NULL INPUT;
 
-create or replace function text_xor_final (bit) returns text as \$\$
+create or replace function text_xor_final (bit) returns text as $$
     select
     (
-        to_hex(substring (\$1 from  1 for 32)::int) ||
-        to_hex(substring (\$1 from 33 for 32)::int) ||
-        to_hex(substring (\$1 from 65 for 32)::int) ||
-        to_hex(substring (\$1 from 97 for 32)::int)
+        to_hex(substring ($1 from  1 for 32)::int) ||
+        to_hex(substring ($1 from 33 for 32)::int) ||
+        to_hex(substring ($1 from 65 for 32)::int) ||
+        to_hex(substring ($1 from 97 for 32)::int)
     ) :: text;
-\$\$ LANGUAGE SQL IMMUTABLE RETURNS NULL ON NULL INPUT;
+$$ LANGUAGE SQL IMMUTABLE RETURNS NULL ON NULL INPUT;
 
 drop aggregate if exists text_xor_agg (text);
 
