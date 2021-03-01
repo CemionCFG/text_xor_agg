@@ -36,5 +36,5 @@ However, if the db cache is not primed, then text_xor_agg() will be comparativel
 
 ## Example
  
-select count(*), text\_xor\_agg (x.*::text)  from x;
+select count(*), text\_xor\_agg (x.\*::text)  from x;
 
