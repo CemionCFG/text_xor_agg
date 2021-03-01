@@ -1,6 +1,6 @@
 # text_xor_agg ()
 
-Creates a postgres aggregate function that:
+Postgres aggregate function that:
 
 - works like any other sql aggregate functions: count(\*), sum(xx), etc
 - calculates the md5() of each value received as its argument (text type)
@@ -11,7 +11,7 @@ Creates a postgres aggregate function that:
 
 ## Script name: create_xor_aggregate.sh
 
-- This script creates a postgres aggregate function
+- This script creates the postgres aggregate function
 - It also declares a few auxiliary functions (beware of name collisions)
 - Run once to create the aggregate function in your postgres DB.
 
