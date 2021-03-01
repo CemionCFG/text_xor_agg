@@ -2,6 +2,14 @@
 -- create_xor_aggregate.sh 
 -- See documentation: https://github.com/artejera/text_xor_agg/blob/main/README.md
 
+create or replace function md5bit (in txt_ text) returns bit as $$
+        select ('x' || md5(txt_))::bit(128) ;
+$$ LANGUAGE SQL IMMUTABLE RETURNS NULL ON NULL INPUT;
+
+create or replace function text_xor_acc (inout acc_ bit, in txt_ text) returns bit
+    as 'select acc_ # md5bit(txt_)'
+LANGUAGE SQL IMMUTABLE RETURNS NULL ON NULL INPUT;
+
 create or replace function text_xor_final (bit) returns text as $$
     select
     (
