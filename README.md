@@ -1,7 +1,7 @@
 ## text_xor_agg ()
 
-Purpuse: Compare tables (queries) for equality in postgres
-- Produce the XOR of the query's rows (hashed with md5)
+Purpuse: Compare tables (queries) in postgres
+- Produces the XOR of the query's rows (hashed with md5)
 - Queries compared need not be ordered.
 
 Postgres aggregate function that:
